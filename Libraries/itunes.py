@@ -14,7 +14,7 @@ response = requests.get(f"https://itunes.apple.com/search?entity=song&limit=50&t
 # if response.status_code == 200: 
 
 data = response.json()
-# data_str = json.dumps(data, indent=2)
+# data_str = json.dumps(data, indent=2) # convert into string 
 # print(data_str)
 
 for result in data["results"]: 
