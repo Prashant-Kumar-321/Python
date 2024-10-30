@@ -3,15 +3,15 @@ from urllib.parse import urlencode
 import sys
 
 class BookClient():
-    BASE_URL = 'https://api.freeapi.app/api/v1/public'
+    __BASE_URL = 'https://api.freeapi.app/api/v1/public'
 
-    def build_url(self, endpoint, params=None):
+    def __build_url(self, endpoint, params=None):
         if params:
             query_strings = urlencode(params)
         else: 
             query_strings = ''
         
-        url = f'{self.BASE_URL}/{endpoint}?{query_strings}'
+        url = f'{self.__BASE_URL}/{endpoint}?{query_strings}'
 
         return url
 
@@ -23,10 +23,11 @@ class BookClient():
             'inc': 'kind, id, etag,volumeInfo',
             'query': topic,
         }
-        url = self.build_url(endpoint,params)
+        url = self.__build_url(endpoint,params)
         # print(url)
         # sys.exit()
 
+        # Handling api request errors
         try: 
             response = requests.get(url)
             response.raise_for_status()
@@ -44,6 +45,21 @@ class BookClient():
             sys.exit()
 
         return response.json()
+    
+    def print_books(self, response):
+        book_list = response['data']['data']
+
+        if len(book_list) == 0:
+            print('Stock has no book currently')
+            return
+        
+        
+    
+
+
+
+
+    
 
 
 def main(): 
