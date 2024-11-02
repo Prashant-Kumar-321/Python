@@ -16,7 +16,7 @@ def read_all_names():
     # ## Compact version ## 
     names = []
 
-    with open("names.txt", "r") as file: 
+    with open("names.txt") as file: 
         for line in file: 
             names.append(line.rstrip())
 
