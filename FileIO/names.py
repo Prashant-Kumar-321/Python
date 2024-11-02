@@ -20,7 +20,7 @@ def read_all_names():
         for line in file: 
             names.append(line.rstrip())
 
-    for name in sorted(names): 
-        print("Hello,", name)
+    for name in sorted(names, reverse=True): 
+        print("Hello,", name)  
 
 read_all_names()

@@ -1,7 +1,7 @@
 cities = []
 
 def main():
-    write_cities()
+    # write_cities()
     read_cities()
 
 
@@ -18,7 +18,7 @@ def read_cities():
             cities.append(line.rstrip())
         
 
-    for city in sorted(cities): 
+    for city in sorted(cities, reverse=True): 
         print(city)
     
 
