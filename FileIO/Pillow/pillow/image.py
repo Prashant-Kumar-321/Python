@@ -4,7 +4,7 @@ import os, sys,math
 
 def main(): 
     with Image.open('./in.jpeg') as image:
-        # image = image.rotate(180)
+        image = image.rotate(180)
         # width, height = image.size
         # scale_factor = 1.5
         # new_height = get_scaled_height(height, scale_factor)
@@ -13,7 +13,7 @@ def main():
 
         # image = image.crop((50, 50, 1000, 700))
 
-        image = image.transpose(Image.TRANSPOSE)
+        # image = image.transpose(Image.TRANSPOSE)
 
         image.save("out.jpeg")
 
