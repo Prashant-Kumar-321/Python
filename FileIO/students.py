@@ -24,9 +24,6 @@ import csv
 
 
 
-
-
-
 # Writing to the csv file using csv module
 
 name = input("What's your name ?")
@@ -42,3 +39,14 @@ with open("students.csv", "a") as file:
     writer = csv.DictWriter(file, fieldnames=["name", "home"])
     writer.writerow({"home": home, "name": name}) 
 
+
+"""
+    file.readLines()
+    file.read() read entire file content as single string
+
+
+
+    problme: 
+    count words 
+    get the most frequent words
+"""
