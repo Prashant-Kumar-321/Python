@@ -38,6 +38,54 @@ print_words() and print_top().
 """
 
 import sys
+import re
+
+def get_wordcount(filename): 
+  word_count = {}
+
+  word_pattern = r"([a-z0-9]+(?:'[a-z0-9]+)?(?:-[a-z0-9]+)*)"
+
+  with open(filename) as file: 
+    for line in file: 
+
+      words = re.findall(word_pattern, line.lower())
+
+      for word in words: 
+
+        if word in word_count: 
+          word_count[word] += 1
+
+        else: 
+          word_count[word] = 1
+
+  return word_count
+
+def print_words(filename): 
+  word_count = get_wordcount(filename)
+
+  for word in sorted(word_count.keys()): 
+    print(f'{word} ---> {word_count[word]}')
+
+def print_top(filename): 
+  word_counts = get_wordcount(filename).items()
+
+  sorted_word_counts = sorted(word_counts, key=lambda tuple: tuple[1], reverse=True)
+
+  # ternary operator 
+  steps = 20 if len(sorted_word_counts) >= 20 else len(sorted_word_counts)
+  
+  for i in range(steps): 
+    word, count = sorted_word_counts[i]
+    print(f'{word} ---> {count}')
+    
+
+
+
+
+
+
+
+
 
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
