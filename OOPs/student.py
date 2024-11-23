@@ -1,13 +1,17 @@
 class Student:
     def __init__(self, name, house): 
-        if not name: 
-            raise ValueError("Missing name")
-
         self.name = name
         self.house = house  # This will invoke the setter function // # We make the house variable constant
 
     def __str__(self): 
         return f"{self.name} from {self.house}" 
+
+    @classmethod
+    def get(cls): 
+        name = input("Name: ")
+        house = input("House: ")
+
+        return cls(name, house) # Reference to the class
 
     # Getter 
     @property
@@ -22,16 +26,22 @@ class Student:
         
         self._house = house
 
-    
+    @property
+    def name(self): 
+        return self._name
+
+    @name.setter
+    def name(self, name): 
+        if not name: 
+            raise ValueError("Missing name ")
+        
+        self._name = name
+
+
 def main(): 
-    student = get_student()
+    student = Student.get()
+    print(student.get())
     print(student)
-
-def get_student(): 
-    name = input("Name: ") 
-    house = input("House: ") 
-
-    return Student(name, house)
 
 
 if __name__ == "__main__": 
