@@ -2,8 +2,6 @@ import pickle
 from pickle import Pickler, Unpickler
 
 
-
-
 """ 
 Pickling and Unpickling in python is the process of serializing and deserialization a python object structure. 
 
